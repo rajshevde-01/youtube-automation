@@ -9,29 +9,29 @@ on:
 jobs:
   build-and-upload:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
           cache: "pip"
-          
+
       - name: Install System Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y ffmpeg imagemagick sqlite3 libespeak1
+          sudo apt-get install -y ffmpeg imagemagick sqlite3 espeak-ng
           # Fix ImageMagick policy to allow text rendering for moviepy
           sudo sed -i 's/none/read,write/g' /etc/ImageMagick-6/policy.xml || true
-          
+
       - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          
+
       - name: Run Automation Script
         env:
           YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
@@ -39,7 +39,7 @@ jobs:
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
         run: |
           python main.py
-          
+
       - name: Upload Database as Artifact
         uses: actions/upload-artifact@v4
         if: always()

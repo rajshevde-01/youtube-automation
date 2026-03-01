@@ -34,12 +34,12 @@ def main():
             title=script_data['title'],
             description=desc
         )
-        log_upload(topic, script_data['title'], "SUCCESS", url)
+        log_upload(topic['title'], script_data['title'], "SUCCESS", url)
         print(f"Successfully uploaded! URL: {url}")
         
     except Exception as e:
         print(f"Failed to complete workflow: {e}")
-        log_upload(topic, script_data['title'], "FAILED", "")
+        log_upload(topic['title'], script_data['title'], "FAILED", "")
         sys.exit(1)
         
     finally:
