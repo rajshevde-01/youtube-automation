@@ -1,0 +1,10 @@
+TTS==0.22.0
+moviepy==1.0.3
+google-api-python-client
+google-auth-oauthlib
+google-auth-httplib2
+python-dotenv
+Pillow
+numpy
+requests
+feedparser
