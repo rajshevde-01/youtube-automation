@@ -27,7 +27,7 @@ def main():
         create_video(audio_path, script_data, video_path)
         
         # Upload to YouTube
-        desc = f"{script_data['full_text']}\n\n#shorts #cybersecurity #tech #{topic.replace(' ', '')}"
+        desc = f"{script_data['full_text']}\n\n#shorts #cybersecurity #tech #news"
         
         url = upload_video(
             video_path=video_path,
