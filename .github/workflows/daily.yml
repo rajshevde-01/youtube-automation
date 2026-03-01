@@ -23,7 +23,7 @@ jobs:
       - name: Install System Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y ffmpeg imagemagick sqlite3 espeak-ng
+          sudo apt-get install -y ffmpeg imagemagick sqlite3 espeak-ng espeak
           # Fix ImageMagick policy to allow text rendering for moviepy
           sudo sed -i 's/none/read,write/g' /etc/ImageMagick-6/policy.xml || true
 
